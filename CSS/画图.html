@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .wrapper {
+      width: 100%;
+    }
+
+    .triangle {
+      height: 0;
+      width: 0;
+      border-left: 20px red solid;
+      border-bottom: 20px red solid;
+      border-top: 20px transparent solid;
+      border-left: 20px transparent solid;
+    }
+
+    .square {
+      width: 50%;
+      padding-bottom: 50%;
+      height: 0;
+      background: red;
+    }
+    .xxx{
+      width: 104px;
+      height: 40px;
+      font-size: 13px;
+      overflow: hidden;
+      position: relative;
+      line-height: 20px;
+    }
+    .xxx::after{
+      content: "     ...";
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      display: block;
+      display: flex;
+      justify-content: center;
+      background: -webkit-linear-gradient(left, transparent, #fff 25%);
+      background: -o-linear-gradient(right, transparent, #fff 25%);
+      background: -moz-linear-gradient(right, transparent, #fff 25%);
+      background: linear-gradient(to right, transparent, #fff 25%);
+      /* width: 13px; */
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrapper">
+
+    <div class="triangle"> </div>
+    <div class="square"></div>
+    <div class="xxx">
+      但是施工方大姑电饭锅电饭锅第三方公司的电饭锅电饭锅的说法大姑发大姑单身狗的风格发大姑说的反攻倒算
+    </div>
+  </div>
+  <script>
+    console.log(document.querySelector(".xxx").scrollHeight)
+  </script>
+</body>
+
+</html>

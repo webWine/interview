@@ -1,0 +1,53 @@
+<!-- 双飞翼布局的原理和圣杯布局基本是一样的,只是在main的处理上,将外部设置margin移到了main上面
+这样在main内部再设置一个盒子,给他一个margin就可以了,这样就不用再对左右两侧的栏目进行相对定位了 -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .wrapper{
+      /* width: 100%; */
+      height: 100px;
+      
+    }
+    .main{
+      float: left;
+      background-color: brown;
+      width: 100%;
+    }
+    .main-inner{
+      margin: 0 200px;
+    }
+    .left{
+      float: left;
+      width: 200px;
+      background-color: aqua;
+      margin-left: -100%;
+      position: relative;
+      /* left: -200px; */
+    }
+    .right{
+      float: left;
+      background-color: antiquewhite;
+      width: 200px;
+      margin-left: -200px;
+      position: relative;
+      /* left: 200px; */
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="main">
+      <div class="main-inner">content</div>
+    </div>
+    <div class="left">left</div>
+    <div class="right">right</div>
+  </div>
+  
+</body>
+</html>

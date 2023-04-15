@@ -1,0 +1,50 @@
+<!-- 原理:圣杯布局实在最外面设置了一个边距,挤压了整个盒子的双边,所以使用左侧盒子设置浮动-100%后
+并没有紧贴屏幕左边,而是紧贴在了外层盒子的左边,要想往外边距移动就还得使用相对定位将其继续向左移动
+修改外层盒子的盒模型种类并不影响 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .wrapper{
+      /* width: 800px; */
+      height: 100px;
+      margin: 0 200px;
+      box-sizing: content-box;
+    }
+    .main{
+      float: left;
+      
+      background-color: brown;
+      width: 100%;
+    }
+    .left{
+      float: left;
+      width: 200px;
+      background-color: aqua;
+      margin-left: -100%;
+      position: relative;
+      left: -200px;
+    }
+    .right{
+      float: left;
+      background-color: antiquewhite;
+      width: 200px;
+      margin-left: -200px;
+      position: relative;
+      left: 200px;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="main">main</div>
+    <div class="left">left</div>
+    <div class="right">right</div>
+  </div>
+  
+</body>
+</html>
