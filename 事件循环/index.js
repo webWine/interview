@@ -57,12 +57,36 @@ setTimeout(()=>{console.log(new Date().getTime(),7);},50000)
  * 常见宏任务
  *   setTimeout
  *   setInterval
-//  *   ajax
-//  *   postMessage
-//  *   MessageChannel
  *   script
  * 常见微任务
  *   Promise.then
  *   mutationObsever
  *   Process.nextTick
+ *   注意:
+ *      有两个东西比较特殊,看起来很像是微任务
+ *      async/await  await后面的代码会立即执行,但立即执行完了以后将会交出执行栈,让外部的同步代码继续执行,执行结束再回到自身,await 其实相当于Promise的then
+ *      Promise中返回Promise.resolve或者new Promise()会执行两次微任务,其中一次是Promise的then的返回如果是一个Promise,他将会调用一次then方法,这是一次微任务
+ *      还有一次是浏览器在处理resolve时会将其塞入一个微任务队列,这个在Promise规范中其实并没有提到
  */
+
+console.log(1);
+async function asyncfn1(){
+    console.log(2);
+    await asyncfn2();
+    console.log(3);
+};
+setTimeout(() => {
+    console.log('setTimeout')
+}, 0)
+
+async function asyncfn2(){
+    console.log(4)
+};
+
+asyncfn1();
+console.log(5); 
+Promise.resolve().then(res=>{
+  console.log(6);
+})
+console.log(7); 
+// 1/2/4/5/3
