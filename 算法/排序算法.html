@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    const arr = [9, 1, 3, 7, 2, 5, 1, 8, 4]
+    // 冒泡排序
+    // 思路:俩俩对比,将最大值或最小值移动到最后面
+    // 复杂度: O(n^2)
+    // const bubbleSort = (list) => {
+    //   for (let i = list.length - 1; i >= 0; i--) {
+    //     for (let k = 0; k < i; k++) {
+    //       const temp = list[k]
+    //       if (list[k] > list[k + 1]) {
+    //         list[k] = list[k+1]
+    //         list[k+1] = temp
+    //       }
+    //     }
+    //   }
+    //   return list
+    // }
+    // console.log("冒泡排序结果:",bubbleSort(arr));
+    
+
+    // 插入排序
+    // 思路: 生成一个新数组,将待排序对象中随便去取一个作为新数组成员进行参照对比,
+    // 复杂度: O(n^2)
+
+    // const insertSort = (list)=>{
+    //   const res = [list[0]];
+    //   for (let i = 1; i < list.length; i++) {
+    //     for (let k = 0; k <= res.length; k++) {
+    //       if(list[i]<=res[k]){
+    //         res.splice(k,0,list[i])
+    //         break;
+    //       } 
+    //     }
+        
+    //   }
+    //   return res
+    // }
+    // console.log("插入排序结果:",insertSort(arr));
+
+    const merge = (left,right) =>{
+      const res= [];
+      while(left.length && right.length){
+        if(left[0]<= right[0]){
+          res.push(left.shift())
+        } else {
+          res.push(right.shift())
+        }
+      }
+
+      while(left.length) res.push(left.shift())
+      while(right.length) res.push(right.shift())
+      return res
+    }
+    // 归并排序
+    const mergeSort = (arr) =>{
+      if(arr.length<2) return arr
+      let middle = Math.floor(arr.length/2),left = arr.slice(0,middle), right = arr.slice(middle);
+      
+      return merge(mergeSort(left),mergeSort(right))
+    }
+    console.log("归并排序结果:",mergeSort(arr));
+   
+
+    // 快速排序
+    // 思路: 分成两块,拿到中间那个数据进行对比,比他大就放右侧,比他小就放左侧,持续递归对比
+    // 复杂度: 最好:O(n log n);最坏: O(n^2)
+    const quickSort = (list) => {
+      if (list.length <= 1) return list;
+      let left = [],
+        right = [],
+        middlIndex = Math.floor(list.length / 2),
+        middle = list.splice(middlIndex, 1)[0];
+
+      for (let i = 0; i < list.length; i++) {
+        const cur = list[i]
+        cur > middle ? right.push(cur) : left.push(cur)
+      }
+      return quickSort(left).concat(middle, quickSort(right))
+    }
+    console.log("快速排序结果:", quickSort(arr));
+  </script>
+</body>
+
+</html>

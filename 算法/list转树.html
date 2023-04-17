@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    const data = [{
+        parent: 3,
+        id: 4,
+        value: 4,
+      },
+      {
+        parent: null,
+        id: 1,
+        value: 1,
+      },
+      {
+        parent: 1,
+        id: 2,
+        value: 2,
+      },
+      {
+        parent: 1,
+        id: 3,
+        value: 3,
+      }
+    ];
+    let map = {}
+    data.forEach(item => {
+      map[item.id] = item
+    })
+    data.forEach(item => {
+      if (map[item.parent]) {
+        map[item.parent].children ? map[item.parent].children.push(item) : map[item.parent].children = [item]
+      }
+
+    })
+    console.log(map[1]);
+  </script>
+  <!-- <script src="./index.js"></script> -->
+</body>
+
+</html>
