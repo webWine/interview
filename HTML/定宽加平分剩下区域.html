@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .wrapper{
+      width: 100%;
+      display: flex;
+      height: 200px;
+    }
+    /* 方案一 */
+    .left{
+      width: 200px;
+      flex-shrink: 0;
+    }
+    .middle{
+      width: 50%;
+      background-color: antiquewhite;
+    }
+    .right{
+      width: 50%;
+      background-color: aqua;
+    }
+
+    /* 方案二 */
+    .left{
+      width: 200px;
+    }
+    .middle{
+      flex: 1;
+      background-color: antiquewhite;
+    }
+    .right{
+      flex: 1;
+      background-color: aqua;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="left"></div>
+    <div class="middle"></div>
+    <div class="right"></div>
+  </div>
+</body>
+</html>
